@@ -185,6 +185,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ShowController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -194,11 +195,37 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Entity.Context.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\Entity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Entities\Entity.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Entity.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Entities\Location.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Order.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Repository\IOrderRepository.cs" />
+    <Compile Include="Models\Entities\Repository\ISlotRepository.cs" />
+    <Compile Include="Models\Entities\Show.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Slot.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Ticket.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\User.cs">
+      <DependentUpon>Entity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\Repository\IShowRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -236,13 +263,19 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Entity.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Models\Entities\Entity.Context.tt">
+    <Content Include="Models\Entities\Entity.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Entity.Context.cs</LastGenOutput>
-    </None>
-    <None Include="Models\Entities\Entity.edmx.diagram">
       <DependentUpon>Entity.edmx</DependentUpon>
-    </None>
+    </Content>
+    <Content Include="Models\Entities\Entity.edmx.diagram">
+      <DependentUpon>Entity.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Entities\Entity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Entity.edmx</DependentUpon>
+      <LastGenOutput>Entity.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
