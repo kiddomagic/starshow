@@ -10,7 +10,7 @@ namespace StarShow_WebAPI.Models.Entities.Repository
         public Order GetOrder(string id)
         {
             var order = new Order();
-            using (var context = new Entities.StarShowDBEntities)
+            using (var context = new Entities.StarShowDBEntities())
             {
                 order = context.Orders.Where(a => a.id == id).FirstOrDefault();
             }
@@ -19,7 +19,7 @@ namespace StarShow_WebAPI.Models.Entities.Repository
 
         public void UpdateOrder(Order order)
         {
-            using (var context = new Entities.StarShowDBEntities)
+            using (var context = new Entities.StarShowDBEntities())
             {
                 order = context.Orders.Add(order);
             }
