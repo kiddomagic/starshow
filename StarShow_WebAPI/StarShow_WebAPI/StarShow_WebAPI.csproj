@@ -189,6 +189,7 @@
     <Compile Include="Controllers\ShowsController.cs" />
     <Compile Include="Controllers\SlotsController.cs" />
     <Compile Include="Controllers\TicketsController.cs" />
+    <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -217,10 +218,12 @@
     <Compile Include="Models\Entities\Repository\IOrderRepository.cs" />
     <Compile Include="Models\Entities\Repository\ISlotRepository.cs" />
     <Compile Include="Models\Entities\Repository\ITicketRepository.cs" />
+    <Compile Include="Models\Entities\Repository\IUserRepository.cs" />
     <Compile Include="Models\Entities\Repository\OrderRepository.cs" />
     <Compile Include="Models\Entities\Repository\ShowRepository.cs" />
     <Compile Include="Models\Entities\Repository\SlotRepository.cs" />
     <Compile Include="Models\Entities\Repository\TicketRepository.cs" />
+    <Compile Include="Models\Entities\Repository\UserRepository.cs" />
     <Compile Include="Models\Entities\Show.cs">
       <DependentUpon>Entity.tt</DependentUpon>
     </Compile>

@@ -28,6 +28,7 @@ namespace StarShow_WebAPI.Models.Entities
         public string phone { get; set; }
         public string type { get; set; }
         public Nullable<bool> enable { get; set; }
+        public string password { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Order> Orders { get; set; }

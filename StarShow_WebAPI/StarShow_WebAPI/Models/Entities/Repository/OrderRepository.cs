@@ -19,9 +19,11 @@ namespace StarShow_WebAPI.Models.Entities.Repository
 
         public void UpdateOrder(Order order)
         {
+            Order newOrder;
             using (var context = new Entities.StarShowDBEntities())
             {
-                order = context.Orders.Add(order);
+                newOrder = context.Orders.Add(order);
+                context.Orders.Add(order);
             }
         }
     }
