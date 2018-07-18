@@ -35,7 +35,7 @@ namespace StarShow_WebAdmin.Models.Repositories
             return locations;
         }
 
-        public void InsertLocation(Location location)
+        public void AddLocation(Location location)
         {            
             using (var context = new StarShowDBEntities())
             {
