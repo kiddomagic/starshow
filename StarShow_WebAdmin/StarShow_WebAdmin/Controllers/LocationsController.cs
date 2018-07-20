@@ -8,17 +8,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StarShow_WebAdmin.Models;
+using StarShow_WebAdmin.Models.Repositories;
 
 namespace StarShow_WebAdmin.Controllers
 {
     public class LocationsController : Controller
     {
         private StarShowDBEntities db = new StarShowDBEntities();
+        private LocationRepository lr = new LocationRepository();
 
         // GET: Locations
         public ActionResult Index()
         {
-            return View(db.Locations.ToList());
+            return View(lr.GetLocations());
         }
 
         // GET: Locations/Details/5
@@ -28,7 +30,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Location location = db.Locations.Find(id);
+            Location location = lr.GetLocation(id);
             if (location == null)
             {
                 return HttpNotFound();
@@ -53,7 +55,7 @@ namespace StarShow_WebAdmin.Controllers
             { 
                 if (ModelState.IsValid)
                 {
-                    db.Locations.Add(location);
+                    lr.AddLocation(location);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -83,7 +85,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Location location = db.Locations.Find(id);
+            Location location = lr.GetLocation(id);
             if (location == null)
             {
                 return HttpNotFound();
@@ -114,7 +116,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Location location = db.Locations.Find(id);
+            Location location = lr.GetLocation(id);
             if (location == null)
             {
                 return HttpNotFound();
@@ -127,8 +129,8 @@ namespace StarShow_WebAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Location location = db.Locations.Find(id);
-            db.Locations.Remove(location);
+            Location location = lr.GetLocation(id);
+            lr.DeleteLocation(location);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StarShow_WebAdmin.Models;
+using StarShow_WebAdmin.Models.Repositories;
 
 namespace StarShow_WebAdmin.Controllers
 {
     public class SlotsController : Controller
     {
         private StarShowDBEntities db = new StarShowDBEntities();
+        SlotRepository sr = new SlotRepository();
 
         // GET: Slots
         public ActionResult Index()
@@ -28,7 +30,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Slot slot = db.Slots.Find(id);
+            Slot slot = sr.GetSlot(id);
             if (slot == null)
             {
                 return HttpNotFound();
@@ -53,7 +55,7 @@ namespace StarShow_WebAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Slots.Add(slot);
+                sr.AddSlot(slot);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,7 +72,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Slot slot = db.Slots.Find(id);
+            Slot slot = sr.GetSlot(id);
             if (slot == null)
             {
                 return HttpNotFound();
@@ -105,7 +107,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Slot slot = db.Slots.Find(id);
+            Slot slot = sr.GetSlot(id);
             if (slot == null)
             {
                 return HttpNotFound();
@@ -118,8 +120,7 @@ namespace StarShow_WebAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            Slot slot = db.Slots.Find(id);
-            db.Slots.Remove(slot);
+            sr.DeleteSlot(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

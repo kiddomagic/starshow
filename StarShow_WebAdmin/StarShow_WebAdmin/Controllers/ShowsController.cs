@@ -7,17 +7,19 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StarShow_WebAdmin.Models;
+using StarShow_WebAdmin.Models.Repositories;
 
 namespace StarShow_WebAdmin.Controllers
 {
     public class ShowsController : Controller
     {
         private StarShowDBEntities db = new StarShowDBEntities();
+        ShowRepository showRepository = new ShowRepository();
 
         // GET: Shows
         public ActionResult Index()
         {
-            return View(db.Shows.ToList());
+            return View(showRepository.GetShows());
         }
 
         // GET: Shows/Details/5
@@ -27,7 +29,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Show show = db.Shows.Find(id);
+            Show show = showRepository.GetShow(id);
             if (show == null)
             {
                 return HttpNotFound();
@@ -50,7 +52,7 @@ namespace StarShow_WebAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Shows.Add(show);
+                showRepository.AddShow(show);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +67,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Show show = db.Shows.Find(id);
+            Show show = showRepository.GetShow(id);
             if (show == null)
             {
                 return HttpNotFound();
@@ -96,7 +98,7 @@ namespace StarShow_WebAdmin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Show show = db.Shows.Find(id);
+            Show show = showRepository.GetShow(id);
             if (show == null)
             {
                 return HttpNotFound();
@@ -108,9 +110,8 @@ namespace StarShow_WebAdmin.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
-        {
-            Show show = db.Shows.Find(id);
-            db.Shows.Remove(show);
+        {            
+            showRepository.DeleteShow(id);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -12,6 +12,6 @@ namespace StarShow_WebAdmin.Models.Repositories
         List<Slot> GetSlots();
         void AddSlot(Slot slot);
         void UpdateSlot(Slot slot);
-        bool DeleteSlot(Slot slot);
+        bool DeleteSlot(string id);
     }
 }

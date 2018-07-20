@@ -7,12 +7,14 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using StarShow_WebAdmin.Models;
+using StarShow_WebAdmin.Models.Repositories;
 
 namespace StarShow_WebAdmin.Controllers
 {
     public class OrdersController : Controller
     {
         private StarShowDBEntities db = new StarShowDBEntities();
+        OrderRepository orderRepository = new OrderRepository();
 
         // GET: Orders
         public ActionResult Index()

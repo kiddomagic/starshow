@@ -15,10 +15,11 @@ namespace StarShow_WebAdmin.Models.Repositories
             }
         }
 
-        public bool DeleteSlot(Slot slot)
+        public bool DeleteSlot(string id)
         {
             using (var context = new StarShowDBEntities())
             {
+                Slot slot = context.Slots.Where(q => q.id == id).FirstOrDefault();
                 context.Slots.Remove(slot);
             }
             return true;
