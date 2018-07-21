@@ -34,6 +34,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -189,9 +191,23 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         } else {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
-            showProgress(true);
-            mAuthTask = new UserLoginTask(email, password);
-            mAuthTask.execute((Void) null);
+            restService = new RestService();
+            restService.getUserService().GetUser(mEmailView.getText().toString(), new Callback<User>() {
+                @Override
+                public void success(User user, Response response) {
+                    if (user.password.equals(mPasswordView.getText().toString())){
+                        showProgress(true);
+                        mAuthTask = new UserLoginTask(mEmailView.getText().toString(), mPasswordView.getText().toString());
+                        mAuthTask.execute((Void) null);
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError retrofitError) {
+
+                }
+            });
+
         }
     }
 
