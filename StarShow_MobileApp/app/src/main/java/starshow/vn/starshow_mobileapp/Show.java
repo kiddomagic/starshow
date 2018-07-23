@@ -12,5 +12,7 @@ public class Show {
     public Date releaseDate;
     @Nullable
     public int status;
+    @Nullable
+    public String image;
 
 }

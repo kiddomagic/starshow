@@ -7,8 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -41,6 +44,7 @@ public class ShowAdapter extends ArrayAdapter<Show> {
             viewHolder.txtDescription = (TextView) view.findViewById(R.id.txtDescription);
             viewHolder.txtLocation = (TextView) view.findViewById(R.id.txtLocation);
             viewHolder.txtPrice = (TextView) view.findViewById(R.id.txtPrice);
+            viewHolder.imgView = (ImageView) view.findViewById(R.id.imgView);
             view.setTag(viewHolder);
         } else {
             viewHolder = (ViewHolder) view.getTag();
@@ -87,10 +91,12 @@ public class ShowAdapter extends ArrayAdapter<Show> {
 //            }
 //        }
         viewHolder.txtDescription.setText(show.description);
+        Picasso.with(context).load(show.image).into(viewHolder.imgView);
         return view;
     }
 
     static class ViewHolder {
         TextView txtName, txtLocation, txtDescription, txtPrice;
+        ImageView imgView;
     }
 }

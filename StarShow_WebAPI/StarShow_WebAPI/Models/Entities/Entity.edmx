@@ -10,8 +10,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="name" Type="nvarchar" MaxLength="100" />
-          <Property Name="address" Type="nchar" MaxLength="10" />
+          <Property Name="name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="address" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -33,6 +33,7 @@
           <Property Name="description" Type="nvarchar" MaxLength="1000" />
           <Property Name="releaseDate" Type="date" />
           <Property Name="status" Type="int" />
+          <Property Name="image" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Slot">
           <Key>
@@ -167,8 +168,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="address" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Slots" Relationship="Self.FK_Slot_Location" FromRole="Location" ToRole="Slot" />
         </EntityType>
         <EntityType Name="Order">
@@ -194,6 +195,7 @@
           <Property Name="releaseDate" Type="DateTime" Precision="0" />
           <Property Name="status" Type="Int32" />
           <NavigationProperty Name="Slots" Relationship="Self.FK_Slot_Show" FromRole="Show" ToRole="Slot" />
+          <Property Name="image" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="Slot">
           <Key>
@@ -355,6 +357,7 @@
           <EntitySetMapping Name="Shows">
             <EntityTypeMapping TypeName="StarShowDBModel.Show">
               <MappingFragment StoreEntitySet="Show">
+                <ScalarProperty Name="image" ColumnName="image" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="title" ColumnName="title" />
                 <ScalarProperty Name="description" ColumnName="description" />

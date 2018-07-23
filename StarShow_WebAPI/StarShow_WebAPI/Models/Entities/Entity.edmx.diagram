@@ -4,17 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="76f1e8dc08a048758c3afe57e05dac01" Name="Diagram1" ZoomLevel="53">
-        <EntityTypeShape EntityType="StarShowDBModel.Location" Width="1.5" PointX="1.5" PointY="9.5" />
-        <EntityTypeShape EntityType="StarShowDBModel.Order" Width="1.5" PointX="3.75" PointY="13.125" />
-        <EntityTypeShape EntityType="StarShowDBModel.Show" Width="1.5" PointX="1.5" PointY="6.25" />
-        <EntityTypeShape EntityType="StarShowDBModel.Slot" Width="1.5" PointX="3.75" PointY="8.875" />
+      <Diagram DiagramId="76f1e8dc08a048758c3afe57e05dac01" Name="Diagram1" ZoomLevel="41">
+        <EntityTypeShape EntityType="StarShowDBModel.Location" Width="1.5" PointX="0.75" PointY="1.5" />
+        <EntityTypeShape EntityType="StarShowDBModel.Order" Width="1.5" PointX="3" PointY="9.125" />
+        <EntityTypeShape EntityType="StarShowDBModel.Show" Width="1.5" PointX="0.75" PointY="5.25" />
+        <EntityTypeShape EntityType="StarShowDBModel.Slot" Width="1.5" PointX="3" PointY="1" />
         <AssociationConnector Association="StarShowDBModel.FK_Slot_Location" />
         <AssociationConnector Association="StarShowDBModel.FK_Slot_Show" />
-        <EntityTypeShape EntityType="StarShowDBModel.Ticket" Width="1.5" PointX="6" PointY="9.25" />
+        <EntityTypeShape EntityType="StarShowDBModel.Ticket" Width="1.5" PointX="5.25" PointY="1.25" />
         <AssociationConnector Association="StarShowDBModel.FK_Ticket_Order" />
         <AssociationConnector Association="StarShowDBModel.FK_Ticket_Slot" />
-        <EntityTypeShape EntityType="StarShowDBModel.User" Width="1.5" PointX="1.5" PointY="12.875" />
+        <EntityTypeShape EntityType="StarShowDBModel.User" Width="1.5" PointX="0.75" PointY="9" />
         <AssociationConnector Association="StarShowDBModel.FK_Order_User" />
       </Diagram>
     </edmx:Diagrams>

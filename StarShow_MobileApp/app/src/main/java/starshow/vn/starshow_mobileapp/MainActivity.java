@@ -89,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                 }
+                Intent loginIntent = getIntent();
+                final String email = loginIntent.getStringExtra("email");
                 final ShowAdapter adapter = new ShowAdapter(MainActivity.this, R.layout.list_show_items, shows, _location, _ticket);
                 mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
@@ -100,6 +102,8 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("id", show.id);
                         intent.putExtra( "price", _ticket.price);
                         intent.putExtra( "location", _location.name+" - "+_location.address);
+                        intent.putExtra("email", email);
+                        intent.putExtra( "image", show.image);
                         startActivity(intent);
                     }
                 });
